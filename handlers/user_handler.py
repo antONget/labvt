@@ -121,6 +121,7 @@ async def callback_catalog_press(callback: CallbackQuery, bot: Bot):
         pass
     await callback.message.answer(text=f'Информация направлена менеджеру')
 
+
 # 2
 @router.message(F.text == 'О нас')
 async def about_company(message: Message):
@@ -140,8 +141,7 @@ async def about_company(message: Message):
 @router.callback_query(F.data == "request")
 async def callback_request(callback: CallbackQuery):
     logging.info('callback_request')
-    await callback.message.answer(text="открывается диалог со специалистом\n\n"
-                                       "нужен usrname специалиста")
+    await callback.message.answer(text=f"Напишите нашему специалисту {config.tg_bot.admin_name}")
 
 
 @router.callback_query(F.data == "send_contact")
